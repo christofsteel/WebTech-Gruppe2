@@ -14,9 +14,9 @@ function zeile_neu(Tabelle){
 	Tabelle1.rows[ct].insertCell(1);
 	Tabelle1.rows[ct].cells[1].innerHTML='<input type = "text" name= "email2" size="30" maxlength="30">';
 	Tabelle1.rows[ct].insertCell(2);
-	Tabelle1.rows[ct].cells[2].innerHTML='<input type = "button" value = "+"  onclick="zeile_neu('+Tabelle+')">';
+	Tabelle1.rows[ct].cells[2].innerHTML='<input type = "button" value = "+"  onclick="zeile_neu(\''+Tabelle+'\')">';
 	Tabelle1.rows[ct].insertCell(3);
-	Tabelle1.rows[ct].cells[3].innerHTML='<input type = "button" value = "-"  onclick="zeile_loeschen('+Tabelle+')">';
+	Tabelle1.rows[ct].cells[3].innerHTML='<input type = "button" value = "-"  onclick="zeile_loeschen(\''+Tabelle+'\')">';
 }
 function zeile_loeschen(Tabelle){
 	var Tabelle= document.getElementById(Tabelle);
