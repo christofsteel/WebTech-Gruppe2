@@ -1,5 +1,12 @@
 timeout = new Array();
-function addTooltip(Id, tooltip,  milliseconds) {
+
+function addTooltip(Id, tooltip, milliseconds) {
+	document.addEventListener('DOMContentLoaded', function(e){
+		addTooltip_(Id, tooltip, milliseconds);
+	}, false);
+}
+
+function addTooltip_(Id, tooltip, milliseconds) {
 	var element=document.getElementById(Id);
 	tooltipId = "tooltip"+Id;
 
@@ -21,8 +28,8 @@ function addTooltip(Id, tooltip,  milliseconds) {
 function showtooltip(e,tooltipId, tooltip, milliseconds) {
 	var e = e? e : window.event;
 	tooltipdiv = document.getElementById(tooltipId);
-	tooltipdiv.style.left=(e.clientX+10)+"px";
-	tooltipdiv.style.top=(e.clientY+10)+"px";
+	tooltipdiv.style.left=(e.pageX+10)+"px";
+	tooltipdiv.style.top=(e.pageY+10)+"px";
 	timeout[tooltipId]=window.setTimeout("tooltipdiv.style.display=\"block\"", milliseconds);
 }
 
@@ -34,7 +41,7 @@ function hidetooltip(tooltipId) {
 function movetooltip(e,tooltipId) {
 	var e = e? e : window.event;
 	tooltipdiv = document.getElementById(tooltipId);
-	tooltipdiv.style.left=(e.clientX+10)+"px";
-	tooltipdiv.style.top=(e.clientY+10)+"px";
+	tooltipdiv.style.left=(e.pageX+10)+"px";
+	tooltipdiv.style.top=(e.pageY+10)+"px";
 
 }
