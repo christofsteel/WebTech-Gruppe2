@@ -1,3 +1,159 @@
 \section{Aufgabe 2.3: Tooltip-Fenster}
-\begin{frame}{Aufgabe 2.3}
+\begin{frame}[<+->]{Aufgabe 2.3}
+\normalsize
+\begin{itemize}
+\item Erstellen einer Tooltipbibliothek
+\item Tooltips sollen sich mit der Maus bewegen
+\item Tooltips sollen erst nach einer bestimmten Anzahl an Millisekunden erscheinen
+\end{itemize}
+\end{frame}
+\tiny{\begin{lstlisting}[language = HTML,
+                                   mathescape = true, 
+                   breaklines=true, 
+                   numbers = left, 
+                   numbersep = 3pt]
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Tooltip Beispiel</title>
+        <script type="text/javascript" src="jstooltip.js"> </script>
+        <script type="text/javascript">
+                addTooltip('name', 'message', 1000);
+                addTooltip('email', 'message2', 1000);
+        </script>
+    </head>
+    
+    <body>
+		<form action="" method="get">
+			<fieldset>
+            	<legend>Eingaben</legend>
+                <label>Name:</label>&nbsp;<input id="name" type="text"><br>
+                <label>E-Mail:</label>&nbsp;<input id="email" type="text">
+                <input id="abschicken" type="submit" value="Abschicken">
+			</fieldset>
+		</form>    	
+    </body>
+</html>
+\end{lstlisting}
+}
+\normalsize
+\begin{frame}[fragile,<+->]
+\tiny{\begin{lstlisting}[language = HTML,
+			numbers=left,
+			firstnumber=6,
+			numbersep = 3pt]
+        <script type="text/javascript" src="jstooltip.js"> </script>
+        <script type="text/javascript">
+                addTooltip('name', 'message', 1000);
+                addTooltip('email', 'message2', 1000);
+        </script>
+\end{lstlisting}}
+\begin{itemize}
+\normalsize
+\item Zeile 6 bindet die Bibliothek ein
+\item Zeile 8 und 9 zeigen, wie man HTML Elementen einen Tooltip hinzufügt.
+\end{itemize}
+\end{frame}
+\begin{frame}[<+->]
+\begin{itemize}
+\item Funktionen der Bibliothek
+\begin{description}
+\small
+\item[addTooltip] Wrapperfunktion, die \textbf{addTooltip\_} aufruft, sobald das Dokument geladen hat.
+\item[addTooltip\_] Fügt unsichtbar dem Dokument alle Tooltips hinzu und erweitert die Elemente, die einen Tooltip bekommen um \textbf{onmouseover}, \textbf{onmousemove} und \textbf{onmouseout} Events.
+\item[showTooltip] Positioniert den Tooltip und startet einen Timer, um ihn sichtbar zu machen.
+\item[hideTooltip] Stoppt den Timer und versteckt den Tooltip wieder.
+\item[moveTooltip] Positioniert den Tooltip anhand der Maus neu.
+\end{description}
+\normalsize
+\item Globales Array
+\small
+\begin{description}
+\item[timeout]Enthält die laufenden Timer, um bei Verlassen eines Elementes den Tooltiptimer abzubrechen.
+\end{description}
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+\tiny{\begin{lstlisting}[language=JavaScript, 
+		   numbers=left,
+		   numbersep=3pt,
+		   breaklines=true]		 
+timeout = new Array();
+
+function addTooltip(Id, tooltip, milliseconds) {
+        document.addEventListener('DOMContentLoaded', function(e){
+                addTooltip_(Id, tooltip, milliseconds);
+        }, false);
+}
+\end{lstlisting}}
+\end{frame}
+\begin{frame}[fragile]
+\tiny{\begin{lstlisting}[language=JavaScript, 
+		   numbers=left,
+		   numbersep=3pt,
+		   breaklines=true
+		   firstnumber=last]
+function addTooltip_(Id, tooltip, milliseconds) {
+        var element=document.getElementById(Id);
+        tooltipId = "tooltip"+Id;
+
+        var tooltipdiv = document.createElement("div");
+        tooltipdiv.id=tooltipId;
+        tooltipdiv.innerHTML=tooltip;
+        tooltipdiv.style.position="absolute";
+        tooltipdiv.style.backgroundColor="#ffffff";
+        tooltipdiv.style.border="1px solid #72B0E6";
+        tooltipdiv.style.font="12px Verdana";
+        tooltipdiv.style.color="#1A80DB";
+        tooltipdiv.style.display="none";
+        document.body.appendChild(tooltipdiv);
+
+        element.setAttribute("onmouseover", "showTooltip(event,'"+tooltipId+"', '"+tooltip+"',"+milliseconds+");");
+        element.setAttribute("onmousemove", "moveTooltip(event,'"+tooltipId+"');");
+        element.setAttribute("onmouseout", "hideTooltip('"+tooltipId+"');");
+}
+
+\end{lstlisting}}
+\end{frame}
+\begin{frame}[fragile]
+\tiny{\begin{lstlisting}[language=JavaScript, 
+		   numbers=left,
+		   numbersep=3pt,
+		   breaklines=true]		 
+function showTooltip(e,tooltipId, tooltip, milliseconds) {
+        var e = e? e : window.event;
+        tooltipdiv = document.getElementById(tooltipId);
+        tooltipdiv.style.left=(e.pageX+10)+"px";
+        tooltipdiv.style.top=(e.pageY+10)+"px";
+        timeout[tooltipId]=window.setTimeout("tooltipdiv.style.display=\"block\"", milliseconds);
+}
+		   
+\end{lstlisting}}
+\end{frame}
+\begin{frame}[fragile]
+\tiny{\begin{lstlisting}[language=JavaScript, 
+		   numbers=left,
+		   numbersep=3pt,
+		   breaklines=true]		 
+function hideTooltip(tooltipId) {
+        window.clearTimeout(timeout[tooltipId]);
+        tooltipdiv = document.getElementById(tooltipId);
+        tooltipdiv.style.display="none";
+}
+\end{lstlisting}}
+\end{frame}
+\begin{frame}[fragile]
+\tiny{\begin{lstlisting}[language=JavaScript, 
+		   numbers=left,
+		   numbersep=3pt,
+		   breaklines=true]		 
+function moveTooltip(e,tooltipId) {
+        var e = e? e : window.event;
+        tooltipdiv = document.getElementById(tooltipId);
+        tooltipdiv.style.left=(e.pageX+10)+"px";
+        tooltipdiv.style.top=(e.pageY+10)+"px";
+
+}
+\end{lstlisting}}
 \end{frame}

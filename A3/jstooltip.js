@@ -21,11 +21,11 @@ function addTooltip_(Id, tooltip, milliseconds) {
 	tooltipdiv.style.display="none";
 	document.body.appendChild(tooltipdiv);
 
-	element.setAttribute("onmouseover", "showtooltip(event,'"+tooltipId+"', '"+tooltip+"',"+milliseconds+");");
-	element.setAttribute("onmousemove", "movetooltip(event,'"+tooltipId+"');");
-	element.setAttribute("onmouseout", "hidetooltip('"+tooltipId+"');");
+	element.setAttribute("onmouseover", "showTooltip(event,'"+tooltipId+"', '"+tooltip+"',"+milliseconds+");");
+	element.setAttribute("onmousemove", "moveTooltip(event,'"+tooltipId+"');");
+	element.setAttribute("onmouseout", "hideTooltip('"+tooltipId+"');");
 }
-function showtooltip(e,tooltipId, tooltip, milliseconds) {
+function showTooltip(e,tooltipId, tooltip, milliseconds) {
 	var e = e? e : window.event;
 	tooltipdiv = document.getElementById(tooltipId);
 	tooltipdiv.style.left=(e.pageX+10)+"px";
@@ -33,12 +33,12 @@ function showtooltip(e,tooltipId, tooltip, milliseconds) {
 	timeout[tooltipId]=window.setTimeout("tooltipdiv.style.display=\"block\"", milliseconds);
 }
 
-function hidetooltip(tooltipId) {
+function hideTooltip(tooltipId) {
 	window.clearTimeout(timeout[tooltipId]);
 	tooltipdiv = document.getElementById(tooltipId);	
 	tooltipdiv.style.display="none";
 }
-function movetooltip(e,tooltipId) {
+function moveTooltip(e,tooltipId) {
 	var e = e? e : window.event;
 	tooltipdiv = document.getElementById(tooltipId);
 	tooltipdiv.style.left=(e.pageX+10)+"px";
