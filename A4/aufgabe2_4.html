@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Hervorheben von Tabellenzeilen mit JavaScript</title>
+<script type="text/javascript">
+	bgcolors = new Array();
+	function color(row) {
+		row.oldcolor=row.getAttribute("bgColor");
+		row.setAttribute("bgColor", "#90FF90");
+	}
+	function backcolor(row) {
+		row.setAttribute("bgColor", row.oldcolor);
+	}
+</script>
+</head>
+
+<body>
+	<table border="1">
+    	<tr bgcolor="#0099CC" onmouseover="color(this);" onmouseout="backcolor(this)">
+        	<th>Name:</th>
+        	<th>Telefon:</th>
+        	<th>Gebäude/ Raum:</th>
+        </tr>
+        <tr bgcolor="#CCCCCC" onmouseover="color(this);" onmouseout="backcolor(this)">
+        	<td>Karakaya, Zeynep</td>
+        	<td>0231 755-7988</td>
+        	<td>GB IV, R330</td>
+        </tr>
+        <tr bgcolor="#CCCCCC" onmouseover="color(this);" onmouseout="backcolor(this)">
+        	<td>van Elst, Marcus</td>
+        	<td>0231 755-7271</td>
+        	<td>GB IV, R330</td>
+        </tr>
+        <tr bgcolor="#CCCCCC" onmouseover="color(this);" onmouseout="backcolor(this)">
+          <td>Jannach, Dietmar</td>
+          <td>0231 755-7272</td>
+          <td>GB IV, R338</td>
+        </tr>
+    </table>
+</body>
+</html>
