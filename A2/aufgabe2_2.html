@@ -3,25 +3,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Aufgabe 2.2</title>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
-function zeile_neu(Tabelle){
-	var Tabelle1= document.getElementById(Tabelle);
-	var ct = Tabelle1.rows.length;
-	Tabelle1.insertRow(ct);
-	Tabelle1.rows[ct].insertCell(0);
-	Tabelle1.rows[ct].cells[0].innerHTML='<select><option>An: </option><option>Cc: </option><option>Bcc: </option></select>';
-	Tabelle1.rows[ct].insertCell(1);
-	Tabelle1.rows[ct].cells[1].innerHTML='<input type = "text" name= "email2" size="30" maxlength="30">';
-	Tabelle1.rows[ct].insertCell(2);
-	Tabelle1.rows[ct].cells[2].innerHTML='<input type = "button" value = "+"  onclick="zeile_neu(\''+Tabelle+'\')">';
-	Tabelle1.rows[ct].insertCell(3);
-	Tabelle1.rows[ct].cells[3].innerHTML='<input type = "button" value = "-"  onclick="zeile_loeschen(\''+Tabelle+'\')">';
+function zeile_neu(){
+	var Zeile_n = document.getElementById("mytable");
+	var newRow = document.createElement("tr");	// Erstellen der neuen Zeile
+	var newCell = document.createElement("td");
+	var id;
+	newCell.innerHTML = "<select ><option>An: </option><option>Cc: </option><option>Bcc: </option></select>";
+	newRow.appendChild(newCell);
+	newCell = document.createElement("td");
+	newCell.innerHTML="<input type = 'text' name= 'email' size='30' maxlength='30'>";
+	newRow.appendChild(newCell);
+	newCell = document.createElement("td");
+	newCell.innerHTML="<input type = 'button' value = '+'  onclick='zeile_neu()'>";
+	newRow.appendChild(newCell);
+	newCell=document.createElement("td");
+	newRow.appendChild(newCell);
+	Zeile_n.appendChild(newRow);
+	newCell.innerHTML = "<input type = 'button' id=Zeile_n.rowIndex value = '-'  onclick='zeile_loeschen(this.parentNode)''> ";
 }
-function zeile_loeschen(Tabelle){
-	var Tabelle= document.getElementById(Tabelle);
-	var ct = Tabelle.rows.length-1;	
-	Tabelle.deleteRow(ct);
+function zeile_loeschen(td){
+	
+	if(confirm("Sind sie wirklich sicher ?")==true){
+		killElement(td.parentNode);
+		
+	}
+}
+function killElement(element) {
+	 if (element) {
+	  var papa = element.parentNode;
+	  if (papa) papa.removeChild(element);
+	 }
+}
+
+function absenden(){
+	var tabelle = document.getElementById("mytable");
+	var child;
+	while(tabelle.hasChildNodes()){
+		child = tabelle.getChildNode();
+		alert(child.getChildNode.value);
+	}
 }
 -->
 </script>
@@ -31,11 +53,13 @@ function zeile_loeschen(Tabelle){
 <fieldset>
 <legend>Email-Versand</legend>
 <table border= "0" cellpadding= "0" cellspacing= "4">
-<tbody id="mytable">
+<thead>
 <tr>
 <td align = "left">Typ:</td>
 <td align = "left">Email-Adresse des Empfängers:</td>
 </tr>
+</thead>
+<tbody id="mytable">
 <tr>
 <td align = "left">
 <select >
@@ -44,12 +68,19 @@ function zeile_loeschen(Tabelle){
 <option>Bcc: </option>
 </select>
 </td>
-<td> <input type = "text" name= "email1" size="30" maxlength="30"></td>
-<td> <input type = "button" value = "+"  onclick="zeile_neu('mytable')"></td>
+<td> <input type = "text" name= "email" size="30" maxlength="30"></td>
+<td id> <input type = "button" value = "+"  onclick="zeile_neu()"></td>
 </tr>
 </tbody>
+
+<tfoot>
+<td><input type = "button" value = "Absenden"  onclick="absenden()"></td>
+<td><input type = "button" value = "Reset"  onclick="reset()"></td>
+
+</tfoot>
 </table>
 </fieldset>
 </form>
+
 </body>
 </html>
