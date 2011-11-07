@@ -39,11 +39,21 @@ function killElement(element) {
 
 function absenden(){
 	var tabelle = document.getElementById("mytable");
-	var child;
-	while(tabelle.hasChildNodes()){
-		child = tabelle.getChildNode();
-		alert(child.getChildNode.value);
+	var childs = tabelle.childNodes;
+	var row;
+	var cell1;
+	var c;
+	var cell2;
+	row=childs[1].childNodes;
+	for(var i =1; i<=childs.length;i++){
+		alert(row.length);
+		cell1 = row[i].selectedIndex;
+		c = row[i].options;
+		alert(c[cell1].index);
+		
+		
 	}
+		
 }
 -->
 </script>
@@ -62,7 +72,7 @@ function absenden(){
 <tbody id="mytable">
 <tr>
 <td align = "left">
-<select >
+<select id="selection" >
 <option>An: </option>
 <option>Cc: </option>
 <option>Bcc: </option>
