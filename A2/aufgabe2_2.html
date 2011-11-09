@@ -5,15 +5,20 @@
 <title>Aufgabe 2.2</title>
 <script type="text/javascript">
 <!--
+
+function ready(){
+	getElementById("minus").visibility="hidden";
+}
+
 function zeile_neu(){
-	var Zeile_n = document.getElementById("mytable");
+	var Zeile_n = document.getElementById("body");
 	var newRow = document.createElement("tr");	// Erstellen der neuen Zeile
 	var newCell = document.createElement("td");
 	var id;
-	newCell.innerHTML = "<select ><option>An: </option><option>Cc: </option><option>Bcc: </option></select>";
+	newCell.innerHTML = "<select><option>An: </option><option>Cc: </option><option>Bcc: </option></select>";
 	newRow.appendChild(newCell);
 	newCell = document.createElement("td");
-	newCell.innerHTML="<input type = 'text' name= 'email' size='30' maxlength='30'>";
+	newCell.innerHTML="<input type = 'text' id='email_x' size='30' maxlength='30'>";
 	newRow.appendChild(newCell);
 	newCell = document.createElement("td");
 	newCell.innerHTML="<input type = 'button' value = '+'  onclick='zeile_neu()'>";
@@ -21,7 +26,7 @@ function zeile_neu(){
 	newCell=document.createElement("td");
 	newRow.appendChild(newCell);
 	Zeile_n.appendChild(newRow);
-	newCell.innerHTML = "<input type = 'button' id=Zeile_n.rowIndex value = '-'  onclick='zeile_loeschen(this.parentNode)''> ";
+	newCell.innerHTML = "<input type = 'button' value = '-'  onclick='zeile_loeschen(this.parentNode)''> ";
 }
 function zeile_loeschen(td){
 	
@@ -37,39 +42,44 @@ function killElement(element) {
 	 }
 }
 
-function absenden(){
-	var tabelle = document.getElementById("mytable");
-	var childs = tabelle.childNodes;
-	var row;
-	var cell1;
-	var c;
-	var cell2;
-	row=childs[1].childNodes;
-	for(var i =1; i<=childs.length;i++){
-		alert(row.length);
-		cell1 = row[i].selectedIndex;
-		c = row[i].options;
-		alert(c[cell1].index);
-		
-		
+function absenden(form){
+	var ausgabe;
+	for(var i=1;i<form.elements.length;i++){
+		if(form.elements[i].type == "button"){}
+		else if(form.elements[i].type == "reset"){}
+		else if(form.elements[i].type=="submit"){}
+		else if(form.elements[i].type=="text"){
+			ausgabe = ausgabe + form.elements[i].value+" \n";
+		}
+		else{
+			if(form.elements[i].selectedIndex == 0){
+				ausgabe = ausgabe + "An: ";	 
+			}
+			else if(form.elements[i].selectedIndex == 1){
+				ausgabe = ausgabe + "Cc: ";
+			}
+			else{
+				ausgabe = ausgabe + "Bcc: "
+			}
+		}
 	}
-		
+	alert(ausgabe);
 }
 -->
 </script>
 </head>
 <body>
-<form>
+<form onSubmit="return absenden(this)">
 <fieldset>
 <legend>Email-Versand</legend>
-<table border= "0" cellpadding= "0" cellspacing= "4">
+<table id="tabelle" border= "0" cellpadding= "0" cellspacing= "4">
 <thead>
 <tr>
 <td align = "left">Typ:</td>
 <td align = "left">Email-Adresse des Empfängers:</td>
 </tr>
 </thead>
-<tbody id="mytable">
+<tbody id="body" >
 <tr>
 <td align = "left">
 <select id="selection" >
@@ -78,15 +88,16 @@ function absenden(){
 <option>Bcc: </option>
 </select>
 </td>
-<td> <input type = "text" name= "email" size="30" maxlength="30"></td>
-<td id> <input type = "button" value = "+"  onclick="zeile_neu()"></td>
+<td> <input type = "text" id="email" size="30" maxlength="30"></td>
+<td> <input type = "button" value = "+" onclick = "zeile_neu()"></td>
+<td> <input type = "button" id="minus" value = "-"></td>
 </tr>
 </tbody>
-
 <tfoot>
-<td><input type = "button" value = "Absenden"  onclick="absenden()"></td>
-<td><input type = "button" value = "Reset"  onclick="reset()"></td>
-
+<tr>
+<td><input type = "submit" value = "Absenden"></td>
+<td><input type = "reset" value = "Reset"></td>
+</tr>
 </tfoot>
 </table>
 </fieldset>
