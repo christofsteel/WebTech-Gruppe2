@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Aufgabe 2.2</title>
 <script type="text/javascript">
 <!--
@@ -26,7 +26,7 @@ function killElement(element) {
 }
 
 function absenden(form){
-	var ausgabe="Empfänger: \n";
+	var ausgabe="EmpfÃ¤nger: \n";
 	for(var i=1;i<form.elements.length;i++){
 		if(form.elements[i].type == "button"){}
 		else if(form.elements[i].type == "reset"){}
@@ -53,39 +53,38 @@ function absenden(form){
 </script>
 </head>
 <body>
-<form onSubmit="return absenden(this)">
-<fieldset>
-<legend>Email-Versand</legend>
-<table border= "0" cellpadding= "0" cellspacing= "4">
-<thead>
-<tr>
-<td align = "left">Typ:</td>
-<td align = "left">Email-Adresse des Empfängers:</td>
-</tr>
-</thead>
-<tbody>
-<tr id="tr">
-<td align = "left">
-<select id="selection" >
-<option>An: </option>
-<option>Cc: </option>
-<option>Bcc: </option>
-</select>
-</td>
-<td> <input type = "text" id="email" size="30" maxlength="30"></td>
-<td> <input type = "button" value = "+" onclick = "zeile_neu()"></td>
-<td> <input type = "button" name="minus" id="minus" value = "-" onclick="zeile_loeschen(this.parentNode)" style="visibility:hidden"></td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td><input type = "submit" value = "Absenden"></td>
-<td><input type = "reset" value = "Reset"></td>
-</tr>
-</tfoot>
-</table>
-</fieldset>
-</form>
+	<form onSubmit="absenden(this)">
+		<fieldset>
+			<legend>Email-Versand</legend>
+			<table border="0" cellpadding="0" cellspacing="4">
+				<thead>
+					<tr>
+						<td>Typ:</td>
+						<td>Email-Adresse des EmpfÃ¤ngers:</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr id="tr">
+						<td><select>
+								<option>An:</option>
+								<option>Cc:</option>
+								<option>Bcc:</option>
+						</select></td>
+						<td><input type="text" size="30" maxlength="30"></td>
+						<td><input type="button" value="+" onclick="zeile_neu()"></td>
+						<td><input type="button" value="-" onclick="zeile_loeschen(this.parentNode)"
+							style="visibility: hidden"></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td><input type="submit" value="Absenden"></td>
+						<td><input type="reset" value="Reset"></td>
+					</tr>
+				</tfoot>
+			</table>
+		</fieldset>
+	</form>
 
 </body>
 </html>
