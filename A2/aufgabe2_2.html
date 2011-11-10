@@ -1,29 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head onLoad=ready();>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Aufgabe 2.2</title>
 <script type="text/javascript">
 <!--
-
-function ready(){
-	document.getElementById("minus").visibility="hidden";
-}
-
 function zeile_neu(){
 	var Zeile = document.getElementById("tr");
 	var Zeile_neu = Zeile.cloneNode(true);
-	Zeile_neu.lastChild.visibility="show";
 	Zeile.parentNode.appendChild(Zeile_neu);
-	
+	Zeile_neu.getElementsByTagName("input")[2].style.visibility="visible";
 }
+
 function zeile_loeschen(td){
-	
 	if(confirm("Sind sie wirklich sicher ?")==true){
 		killElement(td.parentNode);
-		
 	}
 }
+
 function killElement(element) {
 	 if (element) {
 	  var papa = element.parentNode;
@@ -32,7 +26,7 @@ function killElement(element) {
 }
 
 function absenden(form){
-	var ausgabe;
+	var ausgabe="Empfänger: \n";
 	for(var i=1;i<form.elements.length;i++){
 		if(form.elements[i].type == "button"){}
 		else if(form.elements[i].type == "reset"){}
@@ -54,6 +48,7 @@ function absenden(form){
 	}
 	alert(ausgabe);
 }
+
 -->
 </script>
 </head>
@@ -79,7 +74,7 @@ function absenden(form){
 </td>
 <td> <input type = "text" id="email" size="30" maxlength="30"></td>
 <td> <input type = "button" value = "+" onclick = "zeile_neu()"></td>
-<td> <input type = "button" name="minus" id="minus" value = "-" visibility="hidden"></td>
+<td> <input type = "button" name="minus" id="minus" value = "-" onclick="zeile_loeschen(this.parentNode)" style="visibility:hidden"></td>
 </tr>
 </tbody>
 <tfoot>
