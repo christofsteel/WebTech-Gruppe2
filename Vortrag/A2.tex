@@ -12,7 +12,7 @@ Dynamisches Erweitern einer HTML- Datei mit DOM}
                    numbers = left,
 	        firstnumber= 56, 
                    numbersep = 3pt]
-<form onSubmit="return absenden(this)">
+<form onSubmit="absenden(this)">
   <fieldset> <legend> Email-Versand </legend>
     <table border="0" cellpadding="0" cellspacing="4">
       <thead>
@@ -107,7 +107,7 @@ function killElement(element){
 \end{lstlisting}}
 \normalsize
 \begin{itemize}
-\item Die Funktion zeile\_loeschen loescht den Knoten, der die jeweilige Zeile repraesentiert. (siehe naechste Folie) 
+\item Die Funktion zeile\_loeschen(this.parentNode) loescht den Knoten, der die jeweilige Zeile repraesentiert. (siehe naechste Folie) 
 \end{itemize}
 \end{frame}
 \begin{frame}[<+->]
