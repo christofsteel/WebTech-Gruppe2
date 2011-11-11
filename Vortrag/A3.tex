@@ -8,6 +8,7 @@
 \item Die Bibliothek lässt sich ohne großen Aufwand in bestehende HTML-Dokumente einbinden.
 \end{itemize}
 \end{frame}
+\begin{frame}[fragile]{tooltiptest.html}
 \tiny{\begin{lstlisting}[language = HTML,
                                    mathescape = true, 
                    breaklines=true, 
@@ -38,8 +39,9 @@
 </html>
 \end{lstlisting}
 }
+\end{frame}
 \normalsize
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{tooltiptest.html - Skriptsektion}
 \tiny{\begin{lstlisting}[language = HTML,
 			numbers=left,
 			firstnumber=6,
@@ -57,7 +59,7 @@
 \item Zeile 8 und 9 zeigen, wie man HTML Elementen einen Tooltip hinzufügt.
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->]
+\begin{frame}[<+->]{Funktionen der Bibliothek}
 \begin{itemize}
 \item Funktionen der Bibliothek
 \begin{description}
@@ -76,7 +78,7 @@
 \end{description}
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - addTooltip}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -95,7 +97,7 @@ function addTooltip(Id, tooltip, milliseconds) {
 \item[Lösung]Wir warten, bis das Dokument vollständig geparst ist
 \end{description}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - addTooltip\_ Teil I}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -112,7 +114,7 @@ function addTooltip_(Id, tooltip, milliseconds) {
 \item Aus der ID wird eine TooltipId generiert.
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - addTooltip\_ Teil II}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -135,7 +137,7 @@ function addTooltip_(Id, tooltip, milliseconds) {
 \item Ein div-Element wird für den Tooltip generiert, versteckt und dem Dokument hinzugefügt.
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - addTooltip\_ Teil III}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -150,9 +152,10 @@ function addTooltip_(Id, tooltip, milliseconds) {
 \pause
 \begin{itemize}
 \item Dem Element, welches den Tooltip bekommt, werden nun die entsprechenden Events hinzugefügt.
+\item Für den Firefox wichtig ist das übergeben des \textbf{event}.
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - showTooltip}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -175,7 +178,7 @@ function showTooltip(e,tooltipId, tooltip, milliseconds) {
 \end{itemize}
 
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - hideTooltip}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -193,7 +196,7 @@ function hideTooltip(tooltipId) {
 \item Der Timer wird gestoppt und der Tooltip wird wieder versteckt.
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{jstooltip.js - moveTooltip}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
