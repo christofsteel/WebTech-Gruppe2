@@ -15,36 +15,27 @@
   ndkeywordstyle=\color{darkgray}\bfseries,
   identifierstyle=\color{black},
   sensitive=false,
+  showstringspaces=false,
   comment=[l]{//},
   morecomment=[s]{/*}{*/},
   commentstyle=\color{purple}\ttfamily,
   stringstyle=\color{red}\ttfamily,
   morestring=[b]',
-  morestring=[b]"
+  morestring=[b]",
+  showspaces=false,
+  showtabs=false
 }
-%\lstset{
-%   language=JavaScript,
-%   backgroundcolor=\color{lightgray},
-%   extendedchars=true,
-%   basicstyle=\footnotesize\ttfamily,
-%   showstringspaces=false,
-%   showspaces=false,
-%   numbers=left,
-%   numberstyle=\footnotesize,
-%   numbersep=9pt,
-%   tabsize=2,
-%   breaklines=true,
-%   showtabs=false,
-%   captionpos=b
-%}
-
+\lstset{
+  keywordstyle=\color{blue}\bfseries,
+  showstringspaces=false,
+  stringstyle=\color{red}\ttfamily,
+}
 \logo{\pgfimage[width=15.7mm]{tudo127x97.jpg}}
 \title{JavaScript und DOM-Scripting}
 \begin{document}
 \frame{
 	\frametitle{Thema: JavaScript und DOM-Scripting}
 	\tableofcontents
-	[pausesections]
 }
 \input{A1}
 \input{A2}
