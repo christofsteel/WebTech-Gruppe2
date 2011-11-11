@@ -51,27 +51,27 @@ Dynamisches Erweitern einer HTML- Datei mit DOM}
 	        firstnumber=66 , 
                    numbersep = 3pt]
 <tr id="tr">
-  <td><select>
+  <td> <select>
      <option>An:</option>
      <option>Cc:</option>
      <option>Bcc:</option>
-  </select></td>
-  <td><input type="text" size="30" maxlength="30"></td>
-  <td><input type="button" value="+" onclick="zeile_neu()"></td>
-  <td><input type="button" value="-" onclick="zeile_loeschen(this.parentNode)" 
+  </select> </td>
+  <td> <input type="text" size="30" maxlength="30"></td>
+  <td> <input type="button" value="+" onclick="zeile_neu()"></td>
+  <td> <input type="button" value="-" onclick="zeile_loeschen(this.parentNode)" 
              style="visibility: hidden"></td>
 </tr>
 \end{lstlisting}}
 \tiny{ \begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
-		   firstnumber= 8,
+		   firstnumber= 15,
 		   breaklines=true]
 function zeile_neu(){
-	var Zeile = document.getElementById("tr");
-	var Zeile_neu = Zeile.cloneNode(true);
-	Zeile.parentNode.appendChild(Zeile_neu);
-	Zeile_neu.getElementsByTagName("input")[2].style.visibility="visible";}
+  var Zeile = document.getElementById("tr");
+  var Zeile_neu = Zeile.cloneNode(true);
+  Zeile.parentNode.appendChild(Zeile_neu);
+  Zeile_neu.getElementsByTagName("input")[2].style.visibility="visible";}
 \end{lstlisting}}
 \normalsize{
 \begin{itemize}
