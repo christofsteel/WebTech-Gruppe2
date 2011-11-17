@@ -4,11 +4,11 @@
 <meta http-equiv = "Content-Type" content = "text/html; charset = ISO-8859-1">
 <script language = "JavaScript">
 <!--
-function validate()
+function validate(form)
 {
-	var name        = document.vali.nameTextField.value;
-	var eMail       = document.vali.eMailTextField.value;
-	var comment     = document.vali.commentTextArea.value;
+	var name        = form.nameTextField.value;
+	var eMail       = form.eMailTextField.value;
+	var comment     = form.commentTextArea.value;
 	
 	var regExpName  = /([a-zA-Z]{2,})\s([a-zA-Z]{2,})/i;
 	var regExpMail  = /^(\w[\w.]{2,}@)(\w{2,}.)*([a-zA-Z]{3,}\.[a-zA-Z]{2,4})$/i;
@@ -24,6 +24,7 @@ function validate()
 		else if(regExpName.test(name) == false)
 		{
 			alert("Ungültiger Name. Namen in der Form \n Vorname<Leerzeichen>Nachname angeben.");
+			return false;
 		}
 		
 		else
@@ -67,7 +68,7 @@ function validate()
  
  <tr>
   <td align = "left"></td>
-  <td align = "left"><input type = "button" value = "Daten absenden" name = "validateButton" onclick="validate(this);"></td>
+  <td align = "left"><input type = "submit" value = "Daten absenden" name = "validateButton"></td>
  </tr>
 </table>
 
