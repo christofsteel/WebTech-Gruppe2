@@ -6,6 +6,7 @@ Dynamisches Erweitern einer HTML- Datei mit DOM}
 \includegraphics[width = 300px]{../A2/src/formular1.jpg}
 \end{center}
 \end{frame}
+\begin{frame}[<+->][fragile]{Übersicht über die HTML-Form}
 \tiny{\begin{lstlisting}[language = HTML,
                                    mathescape = true, 
                    breaklines=true, 
@@ -43,7 +44,8 @@ Dynamisches Erweitern einer HTML- Datei mit DOM}
   </fieldset>
 </form>
 \end{lstlisting}}
-\begin{frame}[<+->][fragile]
+\end{frame}
+\begin{frame}[<+->][fragile]{DOM Scripting um eine neue Zeile zu erstellen}
 \tiny{ \begin{lstlisting}[language = HTML,
                                    mathescape = true, 
                    breaklines=true, 
@@ -79,7 +81,7 @@ function zeile_neu(){
 \end{itemize}
 }
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{DOM-Scripting um eine Zeile zu löschen}
 \tiny{ \begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
@@ -110,10 +112,10 @@ function killElement(element){
 \item Die Funktion zeile\_loeschen(this.parentNode) loescht den Knoten, der die jeweilige Zeile repraesentiert. (siehe naechste Folie) 
 \end{itemize}
 \end{frame}
-\begin{frame}[<+->]
+\begin{frame}[<+->]{DOM-Inspector}
 \includegraphics[width = 200px]{../A2/src/dom_inspector.jpg}
 \end{frame}
-\begin{frame}[<+->][fragile]
+\begin{frame}[<+->][fragile]{Ausgabe der Formularinhalte}
 \tiny{\begin{lstlisting}[language=JavaScript, 
 		   numbers=left,
 		   numbersep=3pt,
